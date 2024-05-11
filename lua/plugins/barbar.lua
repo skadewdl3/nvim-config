@@ -10,7 +10,7 @@ return {
     local opts = { noremap = true, silent = true } 
     map('n', '<leader>x', '<Cmd>BufferClose<CR>', opts)
     map('n', '<C-Right>', '<Cmd>BufferNext<CR>', opts)
-    map('n', '<C-Left>', '<Cmd>BufferNext<CR>', opts)
+    map('n', '<C-Left>', '<Cmd>BufferPrevious<CR>', opts)
 
 
 

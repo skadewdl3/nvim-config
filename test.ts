@@ -1,4 +1,5 @@
 const test = () => {
   let x = "bruh"
-  console.log(x)
+  let y = 1
+  console.log(x + y)
 }
