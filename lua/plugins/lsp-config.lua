@@ -1,4 +1,5 @@
 local language_servers = {
+  -- lsps
   {
     "lua_ls",
   },
@@ -33,10 +34,10 @@ return {
 
       local mason_lsp = require("mason-lspconfig")
       mason_lsp.setup {
-        ensure_installed = { "lua_ls" }
+        ensure_installed = lsp_names
       }
     end
-  },
+  }, 
   {
     "nvim-lua/lsp-status.nvim",
   },
@@ -70,6 +71,7 @@ return {
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
       vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+
 
     end
   }
