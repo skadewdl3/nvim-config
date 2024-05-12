@@ -21,6 +21,9 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    requires = {
+      'williamboman/mason.nvim',
+    },
     config = function()
 
       local lsp_names = {}
@@ -30,7 +33,7 @@ return {
 
       local mason_lsp = require("mason-lspconfig")
       mason_lsp.setup {
-        ensure_installed = lsp_names
+        ensure_installed = { "lua_ls" }
       }
     end
   },

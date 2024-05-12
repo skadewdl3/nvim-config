@@ -17,10 +17,19 @@ return {
       end
     end
 
+
     vim.keymap.set('n', '<leader>e', toggle_nvimtree, {})
     require('nvim-tree').setup {
-    update_focused_file = { enable = true },
+      update_focused_file = { enable = true },
+      view = {
+        side = "left"
+      }
     }
+
+    vim.keymap.set('n', '<leader>rc', nvimtree.tree.change_root_to_node)
+    vim.keymap.set('n', '<leader>rp', nvimtree.tree.change_root_to_parent)
+
+
   end,
 }
 --[[
