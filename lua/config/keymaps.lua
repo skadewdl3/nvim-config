@@ -44,7 +44,20 @@ return {
 			return temp
 		end)())),
 	},
-	nvim_tree = {},
+	nvim_tree = {
+		{
+			mode = "n",
+			keystroke = "<leader>e",
+			callback = function()
+				local nvimtree = require("nvim-tree.api")
+				if nvimtree.tree.is_tree_buf(nil) then
+					nvimtree.tree.close()
+				else
+					nvimtree.tree.focus()
+				end
+			end,
+		},
+	},
 	telescope = {},
 	completions = {},
 	formatter = {},

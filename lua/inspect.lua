@@ -365,5 +365,5 @@ setmetatable(inspect, {
 })
 
 return function (x)
-  return print(inspect(x))
 end
+  return print(inspect(x))

@@ -7,7 +7,6 @@ return {
 		harpoon.setup({})
 
 		for _, keymap in pairs(require("config.keymaps").harpoon) do
-      require("inspect")(keymap)
       vim.keymap.set(keymap.mode, keymap.keystroke, keymap.callback, {})
 		end
 
