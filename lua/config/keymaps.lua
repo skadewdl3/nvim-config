@@ -1,32 +1,30 @@
-local harpoon = require("harpoon")
-
 return {
 	harpoon = {
 		{
 			mode = "n",
 			keystroke = "<leader>a",
-			callback = function()
+			callback = function(harpoon)
 				harpoon:list():add()
 			end,
 		},
 		{
 			mode = "n",
 			keystroke = "<leader>r",
-			callback = function()
+			callback = function(harpoon)
 				harpoon:list():remove()
 			end,
 		},
 		{
 			mode = "n",
 			keystroke = "<C-Left>",
-			callback = function()
+			callback = function(harpoon)
 				harpoon:list():next()
 			end,
 		},
 		{
 			mode = "n",
 			keystroke = "<C-Right>",
-			callback = function()
+			callback = function(harpoon)
 				harpoon:list():prev()
 			end,
 		},
@@ -36,7 +34,7 @@ return {
 				table.insert(temp, {
 					mode = "n",
 					keystroke = "<leader>" .. tostring(i),
-					callback = function()
+					callback = function(harpoon)
 						harpoon:list():select(i)
 					end,
 				})
@@ -48,13 +46,26 @@ return {
 		{
 			mode = "n",
 			keystroke = "<leader>e",
-			callback = function()
-				local nvimtree = require("nvim-tree.api")
-				if nvimtree.tree.is_tree_buf(nil) then
-					nvimtree.tree.close()
+			callback = function(nvim_tree)
+				if nvim_tree.tree.is_tree_buf(nil) then
+					nvim_tree.tree.close()
 				else
-					nvimtree.tree.focus()
+					nvim_tree.tree.focus()
 				end
+			end,
+		},
+		{
+			mode = "n",
+			keystroke = "<leader>rc",
+			callback = function(nvim_tree)
+				nvim_tree.tree.change_root_to_node()
+			end,
+		},
+		{
+			mode = "n",
+			keystroke = "<leader>rp",
+			callback = function(nvim_tree)
+				nvim_tree.tree.change_root_to_parent()
 			end,
 		},
 	},
