@@ -7,11 +7,16 @@ return {
     harpoon.setup{}
     vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
     vim.keymap.set("n", "<leader>r", function() harpoon:list():remove() end)
+    vim.keymap.set("n", "<leader>ra", function()
+      for i = 1, harpoon:list():length() do
+        harpoon:list():remove()
+      end
+    end
+  )
 
-    vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-    vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-    vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-    vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+    for i = 1, 9 do
+      vim.keymap.set("n", "<leader>" .. tostring(i), function() harpoon:list():select(i) end)
+    end
 
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set("n", "<C-l>", function() harpoon:list():prev() end)
