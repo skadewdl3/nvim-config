@@ -28,8 +28,8 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-Down>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-Up>"] = cmp.mapping.scroll_docs(4),
+          ["<C-n>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-p>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<Esc>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),

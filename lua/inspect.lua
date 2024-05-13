@@ -364,4 +364,6 @@ setmetatable(inspect, {
   end,
 })
 
-return inspect
+return function (x)
+  return print(inspect(x))
+end
