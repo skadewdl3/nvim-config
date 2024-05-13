@@ -1,7 +1,8 @@
+
 return {
-	"kevinhwang91/nvim-ufo",
+  "chrisgrieser/nvim-origami",
+	dependencies = { "kevinhwang91/nvim-ufo", "kevinhwang91/promise-async" },
 	lazy = false,
-	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
 		-- configure ufo to get it's folds from treesitter and indent
 		require("ufo").setup({
@@ -9,5 +10,10 @@ return {
 				return { "treesitter", "indent" }
 			end,
 		})
+
+    require("origami").setup {
+      keepFoldsAcrossSessions = true,
+      setupFoldKeymaps = false
+    }
 	end,
-}
+} 

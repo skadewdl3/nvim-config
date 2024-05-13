@@ -69,7 +69,30 @@ return {
 			end,
 		},
 	},
-	telescope = {},
+	telescope = {
+
+		{
+			mode = "n",
+			keystroke = "<leader>ff",
+			callback = function(telescope)
+				telescope.find_files()
+			end,
+		},
+		{
+			mode = "n",
+			keystroke = "<leader>fg",
+			callback = function(telescope)
+				telescope.live_grep()
+			end,
+		},
+		{
+			mode = "n",
+			keystroke = "<leader>fc",
+			callback = function(telescope)
+				telescope.current_buffer_fuzzy_find()
+			end,
+		},
+	},
 	completions = {},
 	formatter = {},
 }

@@ -5,10 +5,9 @@ return  {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require("telescope.builtin")
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
-
+      for _, keymap in ipairs(require("config.keymaps").telescope) do
+        vim.keymap.set(keymap.mode, keymap.keystroke, function() keymap.callback(builtin) end, {})
+      end
     end
   },
   {
