@@ -93,6 +93,42 @@ return {
 			end,
 		},
 	},
-	completions = {},
+	completions = {
+		{
+			mode = { "n", "i" },
+			keystroke = "<C-a>",
+			callback = function(cmp)
+				return cmp.mapping.confirm({ select = true })
+			end,
+		},
+    {
+      mode = { "n", "i" },
+      keystroke = "<C-j>",
+      callback = function(cmp)
+        return cmp.mapping.scroll_docs(4)
+      end,
+    },
+    {
+      mode = { "n", "i" },
+      keystroke = "<C-k>",
+      callback = function(cmp)
+        return cmp.mapping.scroll_docs(-4)
+      end,
+    },
+    {
+      mode = { "n", "i" },
+      keystroke = "<C-Space>",
+      callback = function(cmp)
+        return cmp.mapping.complete()
+      end,
+    },
+    {
+      mode = { "n", "i"},
+      keystroke = "<Esc>",
+      callback = function(cmp)
+        return cmp.mapping.abort()
+      end,
+    }
+    },
 	formatter = {},
 }

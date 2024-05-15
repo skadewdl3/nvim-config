@@ -1,5 +1,4 @@
 local linters = {
-  "eslint_d"
 }
 
 local formatters = {
@@ -17,6 +16,7 @@ local lsps = {
 		end,
 	},
 	"volar",
+  "astro",
 	"tailwindcss",
 	"svelte",
 	"pyright",

@@ -143,17 +143,16 @@ local defaultTypeOrders = {
 }
 
 local function functionsortKeys(a, b)
+  local ta = type(a)
+  local tb = type(b)
+  if ta == tb and (ta == "string" or ta == "number") then
+    return a < b
+  end
 
-local ta = type(a)
-local tb = type(b)
-if ta == tb and (ta == "string" or ta == "number") then
-  return a < b
-end
+  local dta = defaultTypeOrders[ta] or 100
+  local dtb = defaultTypeOrders[tb] or 100
 
-local dta = defaultTypeOrders[ta] or 100
-local dtb = defaultTypeOrders[tb] or 100
-
-return dta == dtb and ta < tb or dta < dtb
+  return dta == dtb and ta < tb or dta < dtb
 end
 
 local function getKeys(t)
@@ -351,7 +350,7 @@ function inspect.inspect(root, options)
     level = 0,
     newline = newline,
     indent = indent,
-    }, Inspector_mt)
+  }, Inspector_mt)
 
   inspector:putValue(root)
 
@@ -364,6 +363,7 @@ setmetatable(inspect, {
   end,
 })
 
-return function (x)
+return function(x)
+  print(x)
+  print(inspect.inspect(x))
 end
-  return print(inspect(x))
