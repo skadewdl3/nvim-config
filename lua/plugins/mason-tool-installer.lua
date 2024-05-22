@@ -16,6 +16,7 @@ return {
         "lua_ls",
         "wgsl_analyzer",
         "rust_analyzer",
+        "emmet_ls",
         "volar",
         "astro",
         "tailwindcss",
