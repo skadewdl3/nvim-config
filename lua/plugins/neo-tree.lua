@@ -34,6 +34,7 @@ return {
       mappings = {
         ["<leader>rc"] = "set_root",
         ["<leader>rp"] = "navigate_up",
+        ["o"] = "open",
       },
     },
   },
