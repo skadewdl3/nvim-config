@@ -20,8 +20,14 @@ return {
         local lspconfig = require("lspconfig")
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        print("Setting up the " .. server .. " server")
         lspconfig[server].setup({
           capabilities = capabilities,
+          on_attach = function(client, bufnr)
+            require("lsp_signature").on_attach()
+            require("lsp-status").on_attach(client)
+          end,
         })
       end,
     },

@@ -25,6 +25,7 @@ return {
         "html",
         "cssls",
         "clangd",
+        "prismals",
         -- daps
         -- formatters
         "prettierd",

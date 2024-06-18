@@ -3,15 +3,19 @@ return {
   keys = {
     {
       "<leader>ff",
-      "<cmd>Telescope find_files<CR>",
+      ":lua require('telescope.builtin').find_files({hidden=true})<CR>",
     },
     {
-      "<leader>fg",
+      "<leader>rg",
       "<cmd>Telescope live_grep<CR>",
     },
     {
       "<leader>fc",
       "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+    },
+    {
+      "<leader>fg",
+      "<cmd>Telescope git_files<CR>",
     },
   },
 }

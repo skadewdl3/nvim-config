@@ -15,6 +15,12 @@ local function is_tree_buf(bufnr)
   return false
 end
 
+local do_setcd = function(state)
+  local p = state.tree:get_node().path
+  print(p) -- show in command line
+  vim.cmd(string.format('exec(":lcd %s")', p))
+end
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   keys = {
@@ -24,17 +30,49 @@ return {
         if is_tree_buf(nil) then
           vim.cmd(":Neotree close")
         else
-          vim.cmd(":Neotree focus")
+          vim.cmd(":Neotree focus float")
         end
       end,
     },
   },
   opts = {
+    filesystem = {
+      filtered_items = {
+        visible = true,
+        hide_dotfiles = false,
+        hide_gitignored = true,
+      },
+    },
+
+    event_handlers = {
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function(arg)
+          vim.cmd([[
+              setlocal relativenumber
+            ]])
+        end,
+      },
+    },
+    commands = {
+      find_files = function(state)
+        do_setcd(state)
+        require("telescope.builtin").find_files()
+      end,
+      grep = function(state)
+        do_setcd(state)
+        require("telescope.builtin").live_grep()
+      end,
+    },
+
     window = {
+      position = "float",
       mappings = {
         ["<leader>rc"] = "set_root",
         ["<leader>rp"] = "navigate_up",
         ["o"] = "open",
+        ["<leader>f"] = "find_files",
+        ["<leader>g"] = "grep",
       },
     },
   },
