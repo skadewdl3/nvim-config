@@ -1,13 +1,14 @@
 return {
   "gbprod/yanky.nvim",
-  opts = {},
+  opts = {
+    system_clipboard = {
+      sync_with_ring = true,
+    },
+  },
   keys = {
-    { "p", "<Plug>(YankyPutAfter)" },
     { "y", "<Plug>(YankyYank)" },
-    { "<C-c>", "<Plug>(YankyYank)", mode = { "n", "i" } },
-    { "<C-v>", "<Plug>(YankyPutAfter)", mode = { "n", "i" } },
+    { "p", "<Plug>(YankyPutAfter)" },
     { "P", "<Plug>(YankyPutBefore)" },
-    { "<C-S-v>", "<Plug>(YankyPutBefore)", mode = { "n", "i" } },
     { "<C-p>", "<Plug>(YankyPreviousEntry)", mode = { "n", "i" } },
     { "<C-n>", "<Plug>(YankyNextEntry)", mode = { "n", "i" } },
   },
