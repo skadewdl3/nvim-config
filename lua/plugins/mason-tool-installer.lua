@@ -28,6 +28,7 @@ return {
         "prismals",
         "tsserver",
         "asm_lsp",
+        "mdx_analyzer",
         -- daps
         -- formatters
         "prettierd",
